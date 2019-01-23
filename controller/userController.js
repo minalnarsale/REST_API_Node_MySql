@@ -11,10 +11,7 @@ var con = mysql.createConnection({
     database: database
 });
 con.connect(function (err) {
-    if(err)
-        console.log("database connection failed");
-    else
-        console.log("database connection successful!");
+    if(err) throw err;
 });
 
 exports.getUserById = function(req, res){
@@ -50,7 +47,6 @@ exports.createUser = function(req, res){
     var sql1 =  "SELECT userName from user WHERE userName LIKE" +"\"" + params.userName + "\"" + ";";
 
     con.query(sql1, function (err, response) {
-        console.log("len : " + response.length);
         if(err) {
             res.status(500);
             returnObject.status = "Internal Server Error";

@@ -11,10 +11,7 @@ var con = mysql.createConnection({
     database: database
 });
 con.connect(function (err) {
-    if(err)
-        console.log("database connection failed");
-    else
-        console.log("database connection successful!");
+    if(err) throw err;
 });
 
 exports.getPostById = function(req, res){
@@ -47,7 +44,6 @@ exports.findPosts = function(req, res){
     var searchStr = req.params.searchStr;
     var returnObject = {};
     var sql = "SELECT*FROM post where title LIKE " + "\"" + searchStr + "\"" + 'OR body LIKE' + "\"" + searchStr + "\"" + ";";
-    console.log("sql : " + sql);
     con.query(sql, function (err, result) {
         if(err){
             res.status(500);
@@ -135,10 +131,8 @@ exports.updatePost = function(req, res){
 exports.deletePost = function(req, res){
 
     var title = req.params.title;
-    console.log(title);
     var returnObject = {};
     let sql = "DELETE FROM post WHERE title=" + "\"" + title + "\"" + ";";
-    console.log("sql : " + sql);
     con.query(sql , function (err, result) {
         if(err){
             res.status(500);
