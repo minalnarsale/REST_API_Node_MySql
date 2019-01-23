@@ -1,10 +1,14 @@
 {
-  "name": "recruitmentapplication",
+  "name": "REST_API_Node_MySql",
   "version": "1.0.0",
-  "description": "recruitment details",
+  "description": "details of users and their relevant posts",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minalnarsale/REST_API_Node_MySql.git"
   },
   "author": "minal narsale",
   "license": "ISC",
