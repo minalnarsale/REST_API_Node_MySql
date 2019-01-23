@@ -1,0 +1,16 @@
+{
+  "name": "recruitmentapplication",
+  "version": "1.0.0",
+  "description": "recruitment details",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "minal narsale",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0"
+  }
+}
