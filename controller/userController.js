@@ -48,6 +48,7 @@ exports.createUser = function(req, res){
     var params = req.body;
     var returnObject = {};
     var sql1 =  "SELECT userName from user WHERE userName LIKE" +"\"" + params.userName + "\"" + ";";
+
     con.query(sql1, function (err, response) {
         console.log("len : " + response.length);
         if(err) {
@@ -88,6 +89,7 @@ exports.userLogin = function(req, res){
     var params = req.body;
     var returnObject = {};
     var sql = "SELECT*FROM user WHERE userName="+"\""+params.userName+"\"" +" AND password="+"\""+params.password+"\";";
+
     con.query(sql, function (err, result) {
         if(err){
             res.status(500);
@@ -121,6 +123,7 @@ exports.updateUser = function(req, res){
 
     var userId = req.url.substring(req.url.lastIndexOf("/") + 1, req.url.length);
     sql = sql.slice(0, -1) + " WHERE userId =" + userId + ";";
+
     con.query(sql, function (err, result) {
         if(err){
             res.status(500);
@@ -149,6 +152,7 @@ exports.deleteUser = function(req, res){
     var returnObject = {};
     let sql = "DELETE FROM user WHERE userName=" + "\"" + req.url.substring(req.url.lastIndexOf("/") + 1,
         req.url.length) + "\"" + ";";
+    
     con.query(sql , function (err, result) {
         if(err){
             res.status(500);
