@@ -1,23 +1,11 @@
-const mysql = require('mysql')
-const {host,user,password,database} = require('./config')
 const express = require('express')
+const bodyParser = require('body-parser')
 
 var app = express();
-var serverPort = 8080;
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-//connecting to database
-var con = mysql.createConnection({
-    host: host,
-    user: user,
-    password: password,
-    database: database
-});
-con.connect(function (err) {
-    if(err)
-        console.log("database connection failed");
-    else
-        console.log("database connection successful!");
-});
+var serverPort = 8080;
 
 //defining routes
 app.use('/', require('./routes'));
